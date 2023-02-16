@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: Weather Station API
+  version: 1.0.0
+paths:
+  /api/weather:
+    get:
+      summary: Get weather station data
+      responses:
+        200:
+          description: OK
+  /api/weather/stats:
+    get:
+      summary: Get weather stats with limit and offset
+      parameters:
+        - name: startDate
+          in: query
+          description: Start Date for the query
+          schema:
+            type: string
+        - name: endDate
+          in: query
+          description: End Date for the query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            minimum: 1
+            default: 10
+        - name: offset
+          in: query
+          description: Offset of the first record to return
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        200:
+          description: OK
+      
